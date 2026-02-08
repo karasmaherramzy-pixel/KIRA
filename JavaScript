@@ -1,0 +1,71 @@
+// ===== JavaScript كامل =====
+
+// أكواد الأيام
+const codes = {
+    0: "KIRA9X7A2FQ81MZ",
+    1: "4TQKIRAP8Z1N6Y",
+    2: "X7KIRA2M9B5QF8",
+    3: "9Z1MFKIRA7TQX8",
+    4: "KIRA5Q7Z9M1X8F",
+    5: "T8M9QKIRA1X7ZF",
+    6: "7X9KIRAFQ1MZ8T"
+};
+const today = new Date().getDay();
+
+// حالة الأزرار
+let ytDone=false, dcDone=false;
+
+// التعامل مع الأزرار
+function handleButton(btn, url){
+    btn.disabled=true;
+    btn.innerText='جاري المراجعة...';
+    window.open(url,'_blank');
+    setTimeout(()=>{
+        btn.style.background='green';
+        btn.innerText='✔ تم';
+        if(btn===ytBtn) ytDone=true;
+        if(btn===dcBtn) dcDone=true;
+        checkUnlock();
+    },10000);
+}
+
+// تحقق فتح القفل
+function checkUnlock(){
+    if(ytDone && dcDone){
+        lockBtn.classList.remove('locked');
+        lockBtn.classList.add('unlocked');
+        checkDiv.style.display='block';
+    }
+}
+
+// الزرار اليوتيوب
+const ytBtn=document.getElementById('ytBtn');
+ytBtn.addEventListener('click',()=> handleButton(ytBtn,'https://www.youtube.com/@KIRAX-q6b2y'));
+
+// الزرار ديسكورد
+const dcBtn=document.getElementById('dcBtn');
+dcBtn.addEventListener('click',()=> handleButton(dcBtn,'https://discord.gg/D7VpwYkU'));
+
+// القفل
+const lockBtn=document.getElementById('lockBtn');
+const checkDiv=document.getElementById('check');
+const codeBox=document.getElementById('codeBox');
+const todayCodeDiv=document.getElementById('todayCode');
+const copyBtn=document.getElementById('copyBtn');
+
+lockBtn.addEventListener('click',()=>{
+    if(ytDone && dcDone){
+        codeBox.style.display='block';
+        todayCodeDiv.innerText = codes[today];
+        lockBtn.innerText='✔ مفتوح';
+    }
+});
+
+// نسخ الكود
+copyBtn.addEventListener('click',()=>{
+    const code=todayCodeDiv.innerText;
+    navigator.clipboard.writeText(code).then(()=>{
+        copyBtn.innerText='تم النسخ ✔';
+        setTimeout(()=>{copyBtn.innerText='نسخ الكود';},2000);
+    });
+});
