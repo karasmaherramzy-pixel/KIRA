@@ -1,0 +1,86 @@
+/* ===== CSS كامل ===== */
+body{
+    margin:0;
+    font-family: Arial, Tahoma;
+    background:#111;
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.marquee{
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    background:#111;
+    padding:10px 0;
+    border-bottom:2px solid #00f;
+}
+.marquee span{
+    display: inline-block;
+    padding:0 50px;
+    font-weight:bold;
+    font-size:20px;
+    animation: scroll 20s linear infinite;
+}
+@keyframes scroll{
+    0%{transform: translateX(100%);}
+    100%{transform: translateX(-100%);}
+}
+
+.box{
+    width:400px;
+    margin:50px auto;
+    padding:25px;
+    border-radius:15px;
+    background: rgba(0,0,0,0.5);
+    box-shadow:0 0 15px #00f5;
+    text-align:center;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+button img{
+    width:25px;
+    height:25px;
+    margin-right:10px;
+}
+
+.youtube{background:#000; color:red;}
+.discord{background:#000; color:#00bfff;}
+.locked{background:#000; color:white; cursor:not-allowed;}
+.unlocked{background:green; color:white;}
+
+.checkmark{
+    display:none;
+    font-size:24px;
+    color:lime;
+    margin-top:10px;
+}
+
+.code-box{
+    margin-top:20px;
+    padding:20px;
+    border-radius:12px;
+    background: rgba(255,255,255,0.1);
+    font-size:20px;
+    word-break:break-all;
+}
+.copy-btn{
+    margin-top:10px;
+    padding:10px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background:#00ffcc;
+    cursor:pointer;
+}
